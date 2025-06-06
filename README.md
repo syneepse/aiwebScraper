@@ -6,6 +6,7 @@ Welcome to the Aiscraper Crew project, powered by [crewAI](https://crewai.com). 
 
 Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
 
+
 First, if you haven't already, install uv from here https://docs.astral.sh/uv/getting-started/installation/:
 
 ```bash
@@ -22,6 +23,8 @@ OR (if it says that "crewai" isn't recognized, you'll need to use UV directly)
 ```bash
 uv run crewai install
 ```
+if you get any issues related to "visual c++ build tools", you'll need to install that as well, please refer the guide here - 
+https://stackoverflow.com/questions/64261546/how-to-solve-error-microsoft-visual-c-14-0-or-greater-is-required-when-inst
 
 Additionally, you will also need to configure an embedder, this project uses ollama for the same.
 
