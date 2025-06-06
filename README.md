@@ -62,7 +62,7 @@ $ uv run crewai run
 This command initializes the aiScraper Crew, assembling the agents and assigning them tasks as defined in your configuration.
 
 Output extraction - 
-refer the below code for extracting the output (visible in) - 
+refer the below code for extracting the output (visible in `src/aiscraper/main.py`) - 
 ```python
 def run():
     """
