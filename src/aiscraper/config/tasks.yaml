@@ -1,0 +1,19 @@
+research_task:
+  description: >
+    Conduct a thorough research about {company_name} and its online presence.
+    Use available tools to find the information.
+    Focus on its websites, social media handles, and any other relevant information.
+    Make sure you find any interesting and relevant information given the context.
+  expected_output: >
+    A detailed report containing the location of the company's head quarters,
+    its official website, LinkedIn handles, and which industry it is a part of.
+    
+  agent: researcher
+
+reporting_task:
+  description: >
+    Review the context you got and expand each topic into a full section for a report.
+    Make sure the report is detailed and contains any and all relevant information.
+  expected_output: >
+   JSON object with the following keys: Company Name, Official_website, LinkedIn, Location, industry.
+  agent: reporting_analyst
