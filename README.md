@@ -6,10 +6,10 @@ Welcome to the Aiscraper Crew project, powered by [crewAI](https://crewai.com). 
 
 Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
 
-First, if you haven't already, install uv:
+First, if you haven't already, install uv from here https://docs.astral.sh/uv/getting-started/installation/:
 
 ```bash
-pip install uv
+winget install --id=astral-sh.uv  -e
 ```
 
 Next, navigate to your project directory and install the dependencies:
@@ -18,9 +18,26 @@ Next, navigate to your project directory and install the dependencies:
 ```bash
 crewai install
 ```
+OR (if it says that "crewai" isn't recognized, you'll need to use UV directly)
+```bash
+uv run crewai install
+```
+
+Additionally, you will also need to configure an embedder, this project uses ollama for the same.
+
+Install ollama through the link here - https://ollama.com/
+
+and then pull the embedder using the following command : 
+
+```bash
+ollama pull nomic-embed-text
+```
+
 ### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+**Add your `MODEL`, `GEMINI_API_KEY` and `SERPER_API_KEY` into the `.env` file**
+
+
 
 - Modify `src/aiscraper/config/agents.yaml` to define your agents
 - Modify `src/aiscraper/config/tasks.yaml` to define your tasks
@@ -34,10 +51,31 @@ To kickstart your crew of AI agents and begin task execution, run this from the 
 ```bash
 $ crewai run
 ```
+(OR)
+```bash
+$ uv run crewai run
+```
 
 This command initializes the aiScraper Crew, assembling the agents and assigning them tasks as defined in your configuration.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+Output extraction - 
+refer the below code for extracting the output (visible in) - 
+```python
+def run():
+    """
+    Run the crew.
+    """
+    inputs = {
+        'company_name': 'McKinsey & Company',
+        # 'current_year': str(datetime.now().year)
+    }
+    
+    try:
+        run_output = Aiscraper().crew().kickoff(inputs=inputs)
+        print(f"Crew run completed successfully. Output: {run_output}")
+    except Exception as e:
+        raise Exception(f"An error occurred while running the crew: {e}")
+```
 
 ## Understanding Your Crew
 
